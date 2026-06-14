@@ -1,0 +1,31 @@
+# Unreal Engine Generated Files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.vcxproj.user
+*.vcxproj.filters
+*.VC.db
+*.VC.opendb
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Fab Assets (not in main branch)
+Content/FabAssets/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.sln.docstates
+
+# Logs
+*.log
