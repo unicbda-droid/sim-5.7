@@ -1,6 +1,8 @@
 #include "SimCharacter.h"
 #include "SimNeedsComponent.h"
 #include "SimInteractionComponent.h"
+#include "SimActionQueueComponent.h"
+#include "SimFreeWillComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -35,6 +37,10 @@ ASimCharacter::ASimCharacter(const FObjectInitializer& ObjectInitializer)
     NeedsComponent = CreateDefaultSubobject<USimNeedsComponent>(TEXT("NeedsComponent"));
 
     InteractionComponent = CreateDefaultSubobject<USimInteractionComponent>(TEXT("InteractionComponent"));
+
+    ActionQueueComponent = CreateDefaultSubobject<USimActionQueueComponent>(TEXT("ActionQueueComponent"));
+
+    FreeWillComponent = CreateDefaultSubobject<USimFreeWillComponent>(TEXT("FreeWillComponent"));
 }
 
 void ASimCharacter::BeginPlay()

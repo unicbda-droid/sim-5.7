@@ -14,3 +14,15 @@ enum class ENeedsType : uint8
     Social  UMETA(DisplayName = "Social"),
     MAX     UMETA(Hidden)
 };
+
+USTRUCT(BlueprintType)
+struct FNeedModifier
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    ENeedsType NeedType;
+
+    UPROPERTY(BlueprintReadWrite)
+    float Delta;
+};

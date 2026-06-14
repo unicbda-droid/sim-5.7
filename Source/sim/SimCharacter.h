@@ -6,6 +6,8 @@
 
 class USimNeedsComponent;
 class USimInteractionComponent;
+class USimActionQueueComponent;
+class USimFreeWillComponent;
 class UCameraComponent;
 class USpringArmComponent;
 
@@ -42,6 +44,12 @@ public:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
     USimInteractionComponent* InteractionComponent;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Actions")
+    USimActionQueueComponent* ActionQueueComponent;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI")
+    USimFreeWillComponent* FreeWillComponent;
 
     UFUNCTION(BlueprintCallable, Category = "Camera")
     void SwitchCameraMode(ECameraMode NewMode);

@@ -27,6 +27,45 @@ float ASimGameState::GetTimeOfDayNormalized() const
     return GameTimeOfDay / DayLength;
 }
 
+int32 ASimGameState::GetHours() const
+{
+    return FMath::FloorToInt(GameTimeOfDay / 3600.f);
+}
+
+int32 ASimGameState::GetMinutes() const
+{
+    float Remainder = GameTimeOfDay - (GetHours() * 3600.f);
+    return FMath::FloorToInt(Remainder / 60.f);
+}
+
+int32 ASimGameState::GetSeconds() const
+{
+    float Remainder = GameTimeOfDay - (GetHours() * 3600.f) - (GetMinutes() * 60.f);
+    return FMath::FloorToInt(Remainder);
+}
+
+FText ASimGameState::GetFormattedTime() const
+{
+    int32 H = GetHours();
+    int32 M = GetMinutes();
+    FNumberFormattingOptions Opts = FNumberFormattingOptions::DefaultNoGrouping();
+    Opts.SetMinimumIntegralDigits(2);
+    return FText::Format(NSLOCTEXT("SimLife", "TimeFormat", "{0}:{1}"),
+        FText::AsNumber(H, &Opts),
+        FText::AsNumber(M, &Opts));
+}
+
+bool ASimGameState::IsDayTime() const
+{
+    float H = GetHours();
+    return H >= DawnHour && H < DuskHour;
+}
+
+bool ASimGameState::IsNightTime() const
+{
+    return !IsDayTime();
+}
+
 void ASimGameState::SetTimeScale(float NewScale)
 {
     TimeScale = FMath::Clamp(NewScale, 0.f, 100.f);

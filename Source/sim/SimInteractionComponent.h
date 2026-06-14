@@ -8,18 +8,6 @@
 class ASimCharacter;
 
 USTRUCT(BlueprintType)
-struct FNeedModifier
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite)
-    ENeedsType NeedType;
-
-    UPROPERTY(BlueprintReadWrite)
-    float Delta;
-};
-
-USTRUCT(BlueprintType)
 struct FSimInteraction
 {
     GENERATED_BODY()
