@@ -1,8 +1,9 @@
-# Unreal Engine Generated Files
-Binaries/
+﻿# Unreal Engine
 DerivedDataCache/
 Intermediate/
 Saved/
+Binaries/
+Build/
 *.sln
 *.suo
 *.sdf
@@ -11,21 +12,48 @@ Saved/
 *.vcxproj.filters
 *.VC.db
 *.VC.opendb
-
-# macOS
-.DS_Store
-
-# Windows
-Thumbs.db
-
-# Fab Assets (not in main branch)
-Content/FabAssets/
-
-# IDE
-.vs/
+*.xcodeproj
+*.xcworkspace
+*.code-workspace
 .vscode/
-*.user
-*.sln.docstates
-
-# Logs
+.idea/
+*.DS_Store
+Thumbs.db
 *.log
+*.manifest
+*.pdb
+*.exp
+*.lib
+*.obj
+*.idb
+*.ipdb
+*.iobj
+*.res
+*.ilk
+*.metallib
+editor.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Soft-ue-bridge temp
+.soft-ue-bridge/
+
+# Import temp scripts
+Imports/export_fbx*.py
+Imports/source/
+
+# Backup files
+*.bak
+*.bak0
+*.bak1
+*.bak2
+*.bak3
+
+# Text junk
+Textdokument (neu).txt
+
+# Large Fab marketplace assets (not owned by this project)
+Content/FabAssets/
