@@ -41,9 +41,11 @@ __pycache__/
 # Soft-ue-bridge temp
 .soft-ue-bridge/
 
-# Import temp scripts
-Imports/export_fbx*.py
-Imports/source/
+# Import source assets (raw .blend, FBX, textures, Python scripts)
+Imports/*
+
+# Imported UE content from third-party source assets
+Content/Imports/
 
 # Backup files
 *.bak

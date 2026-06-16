@@ -197,4 +197,14 @@ AddRoute(Router, RouteHandles, TEXT("/api/my-command"), EHttpServerRequestVerbs:
 
 ## License
 
-Project-specific code is provided as-is for educational/demonstration purposes. Third-party plugins and assets retain their respective licenses.
+**Code is open source** — All C++ plugin code (`Plugins/UETerminalBridge/`), build scripts, and documentation in this repository are provided under the MIT License. You are free to use, modify, and distribute them.
+
+**Assets are NOT included** — The `.blend`, `.fbx`, textures, and all other 3D assets (`Imports/`, `Content/Imports/`, `Content/FabAssets/`) are **not** part of this open-source release. They are either:
+- Third-party assets from Sketchfab / Fab / Quixel (retain their original licenses)
+- Demo assets created for testing only
+
+FabAssets (`Content/FabAssets/`) are excluded from version control entirely via `.gitignore`.
+
+**Third-party plugins:**
+- **SoftUEBridge** — separate open-source project, see https://github.com/anomalyco/soft-ue-bridge
+- **Unreal Engine 5.7** — proprietary, subject to Epic Games' EULA
