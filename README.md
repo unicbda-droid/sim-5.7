@@ -191,7 +191,7 @@ AddRoute(Router, RouteHandles, TEXT("/api/my-command"), EHttpServerRequestVerbs:
 | **[opencode](https://opencode.ai)** | AI coding assistant (this project was built interactively with opencode) |
 | **[Gemini](https://deepmind.google/technologies/gemini/)** | LLM powering the AI-assisted development workflow |
 | **[Blender 5.1](https://www.blender.org/)** | 3D model FBX export pipeline |
-| **[Sketchfab](https://sketchfab.com/)** | Elephant statue 3D model source |
+| **[Fab (Elephant Statue)](https://fab.com/s/2f16c85f3122)** | Elephant statue 3D model source (free download) |
 
 ---
 
