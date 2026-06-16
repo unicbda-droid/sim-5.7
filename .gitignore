@@ -59,3 +59,9 @@ Textdokument (neu).txt
 
 # Large Fab marketplace assets (not owned by this project)
 Content/FabAssets/
+
+# Generated MetaHuman data (derived from third-party MetaHuman framework)
+Content/MetaHumans/
+
+# Test pipeline exports
+Tools/makehuman_to_metahuman/exports/*.fbx

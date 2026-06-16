@@ -7,7 +7,16 @@
 
 ASimGameMode::ASimGameMode()
 {
-    DefaultPawnClass = ASimCharacter::StaticClass();
+    static ConstructorHelpers::FClassFinder<APawn> MHBp(TEXT("/Game/MetaHumans/Hannah/MHC_Hannah/BP_MHC_Hannah.BP_MHC_Hannah_C"));
+    if (MHBp.Succeeded())
+    {
+        DefaultPawnClass = MHBp.Class;
+    }
+    else
+    {
+        DefaultPawnClass = ASimCharacter::StaticClass();
+    }
+
     PlayerControllerClass = ASimPlayerController::StaticClass();
     GameStateClass = ASimGameState::StaticClass();
     PlayerStateClass = ASimPlayerState::StaticClass();

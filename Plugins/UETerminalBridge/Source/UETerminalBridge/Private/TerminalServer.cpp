@@ -22,6 +22,8 @@
 #include "Editor.h"
 #endif
 
+
+
 DEFINE_LOG_CATEGORY_STATIC(LogTerminalServer, Log, All);
 
 // ---------------------------------------------------------------------------
@@ -195,7 +197,7 @@ bool FTerminalServer::Start(int32 Port)
 			return JsonResponse(Result);
 		});
 
-	// -- Execute code (placeholder)
+	// -- Execute Python code (inline or file path)
 	AddRoute(HttpRouter, RouteHandles, TEXT("/api/exec"), EHttpServerRequestVerbs::VERB_POST,
 		[](const FHttpServerRequest& Request) -> TUniquePtr<FHttpServerResponse>
 		{
@@ -203,9 +205,39 @@ bool FTerminalServer::Start(int32 Port)
 			if (!Json.IsValid() || !Json->HasField(TEXT("code")))
 				return ErrorResponse(TEXT("Missing 'code' field"));
 
+			FString Code = Json->GetStringField(TEXT("code"));
+			bool bIsFile = FPaths::FileExists(Code);
+
 			TSharedPtr<FJsonObject> Result = MakeShareable(new FJsonObject());
-			Result->SetStringField(TEXT("status"), TEXT("received"));
-			Result->SetBoolField(TEXT("success"), true);
+			FString Output;
+			bool bSuccess = false;
+
+			if (GEngine)
+			{
+				FString PyCmd;
+				if (bIsFile)
+				{
+					PyCmd = FString::Printf(TEXT("py \"%s\""), *Code);
+				}
+				else
+				{
+					// Write inline code to temp file
+					FString TempFile = FPaths::ProjectSavedDir() / TEXT("Python") / TEXT("_exec_temp.py");
+					FFileHelper::SaveStringToFile(Code, *TempFile);
+					PyCmd = FString::Printf(TEXT("py \"%s\""), *TempFile);
+				}
+
+				GEngine->Exec(nullptr, *PyCmd, *GLog);
+				bSuccess = true;
+				Output = FString::Printf(TEXT("Executed: py %s"), bIsFile ? *Code : TEXT("<inline>"));
+			}
+			else
+			{
+				Output = TEXT("GEngine not available");
+			}
+
+			Result->SetStringField(TEXT("output"), Output);
+			Result->SetBoolField(TEXT("success"), bSuccess);
 			return JsonResponse(Result);
 		});
 
